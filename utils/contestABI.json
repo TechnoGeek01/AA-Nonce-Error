@@ -1,0 +1,300 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  { "inputs": [], "name": "ContestAlreadyStarted", "type": "error" },
+  { "inputs": [], "name": "InvalidCaptainViceCaptain", "type": "error" },
+  { "inputs": [], "name": "InvalidCurrentScores", "type": "error" },
+  { "inputs": [], "name": "InvalidInitialization", "type": "error" },
+  { "inputs": [], "name": "InvalidInput", "type": "error" },
+  { "inputs": [], "name": "InvalidPlayerCount", "type": "error" },
+  { "inputs": [], "name": "InvalidPlayerPreset", "type": "error" },
+  { "inputs": [], "name": "MaxUserCreditExceeded", "type": "error" },
+  { "inputs": [], "name": "NoRewards", "type": "error" },
+  { "inputs": [], "name": "NotInitializing", "type": "error" },
+  { "inputs": [], "name": "PlayerAlreadyInTeam", "type": "error" },
+  { "inputs": [], "name": "PlayerNotInMatch", "type": "error" },
+  { "inputs": [], "name": "TeamAlreadyCreated", "type": "error" },
+  { "inputs": [], "name": "TeamNotCreated", "type": "error" },
+  { "inputs": [], "name": "Unauthorized", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "version",
+        "type": "uint64"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "RewardsClaimed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "TeamCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "TeamUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [],
+    "name": "TopNResultsUploaded",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_TEAMS",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MAX_USER_CREDITS",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "START_BUFFER",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "claimRewards",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "_currentScores",
+        "type": "uint256[]"
+      },
+      { "internalType": "address", "name": "_user", "type": "address" }
+    ],
+    "name": "computeRealTimeScore",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_user", "type": "address" }
+    ],
+    "name": "computeUserTeamScore",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "captainIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "viceCaptainIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "playerIds",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "substitutes",
+            "type": "uint256[]"
+          }
+        ],
+        "internalType": "struct UserTeamInputData",
+        "name": "_team",
+        "type": "tuple"
+      }
+    ],
+    "name": "createTeamAndJoin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_user", "type": "address" }
+    ],
+    "name": "getUserRewards",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_user", "type": "address" }
+    ],
+    "name": "getUserTeamData",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bool", "name": "exists", "type": "bool" },
+          {
+            "internalType": "uint256",
+            "name": "captainIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "viceCaptainIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "playerIds",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "substitutes",
+            "type": "uint256[]"
+          }
+        ],
+        "internalType": "struct UserTeamData",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_matchId", "type": "uint256" }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "league",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "matchId",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_token", "type": "address" },
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+    ],
+    "name": "recoverTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalUserTeams",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "captainIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "viceCaptainIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "playerIds",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "substitutes",
+            "type": "uint256[]"
+          }
+        ],
+        "internalType": "struct UserTeamInputData",
+        "name": "_team",
+        "type": "tuple"
+      }
+    ],
+    "name": "updateUserTeam",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address[]", "name": "_users", "type": "address[]" },
+      { "internalType": "uint256[]", "name": "_rewards", "type": "uint256[]" }
+    ],
+    "name": "uploadTopNResults",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
